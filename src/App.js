@@ -14,6 +14,7 @@ class App extends React.Component {
     hasTrunfo: false,
     cardTrunfo: false,
     isSaveButtonDisabled: true,
+    cardList: [],
   };
 
   onInputChange = ({ target }) => {
@@ -25,6 +26,33 @@ class App extends React.Component {
   onSaveButtonClick = (event) => {
     event.preventDefault();
     this.verifySuperTrunfo();
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+    } = this.state;
+
+    const savedCard = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+    };
+    this.setState((previousState) => ({
+      cardList: [...previousState.cardList, savedCard],
+    }));
+
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -34,6 +62,17 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
     });
+  };
+
+  createCardList = () => {
+    const { cardList } = this.state;
+    return cardList
+      .map((card) => (
+        <Card
+          key={ card.cardName }
+          { ...card }
+        />
+      ));
   };
 
   verifyteSaveButton = () => {
@@ -110,6 +149,9 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {
+          this.createCardList()
+        }
       </div>
     );
   }
