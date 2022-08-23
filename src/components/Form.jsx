@@ -121,7 +121,7 @@ class Form extends Component {
     );
   }
 }
-// requisito 2 - props
+
 Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
