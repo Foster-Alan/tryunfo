@@ -21,6 +21,19 @@ class App extends React.Component {
     this.setState({ [name]: value }, () => this.verifyteSaveButton());
   };
 
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+    });
+  };
+
   verifyteSaveButton = () => {
     if (this.verifyAttribute() && this.verifyText()) {
       return this.setState({ isSaveButtonDisabled: false });
@@ -35,12 +48,12 @@ class App extends React.Component {
     const attr3 = Number(cardAttr3);
     const sumAttrs = attr1 + attr2 + attr3;
     const maxAttValue = 90;
-    const maxSumAtt = 210;
+    const maxSumAttValue = 210;
 
     return !(attr1 > maxAttValue || attr1 < 0
       || attr2 > maxAttValue || attr2 < 0
       || attr3 > maxAttValue || attr3 < 0
-      || sumAttrs > maxSumAtt);
+      || sumAttrs > maxSumAttValue);
   };
 
   verifyText = () => {
@@ -49,6 +62,7 @@ class App extends React.Component {
   };
 
   render() {
+    const { onInputChange, onSaveButtonClick } = this;
     const {
       cardName,
       cardDescription,
@@ -64,7 +78,7 @@ class App extends React.Component {
       <div>
         <h1>Tryunfo</h1>
         <Form
-          onInputChange={ this.onInputChange }
+          onInputChange={ onInputChange }
           cardName={ cardName }
           cardDescription={ cardDescription }
           cardAttr1={ cardAttr1 }
@@ -74,6 +88,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ onSaveButtonClick }
         />
 
         <Card
