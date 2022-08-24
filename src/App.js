@@ -14,7 +14,59 @@ class App extends React.Component {
     hasTrunfo: false,
     cardTrunfo: false,
     isSaveButtonDisabled: true,
-    cardList: [],
+    savedCards: [],
+    filterCards: [],
+    disabledInput: false,
+  };
+
+  filteredName = (event) => {
+    const { savedCards } = this.state;
+    const { target: { value } } = event;
+    this.setState({ filterCards: savedCards
+      .filter((param) => (param.cardName).includes(value)) });
+  };
+
+  FilteredRare = (event) => {
+    const { savedCards } = this.state;
+    const { target: { value } } = event;
+    this.setState({ filterCards: savedCards
+      .filter((param) => ((value === 'todas') ? savedCards : param.cardRare === value)),
+    });
+  };
+
+  filteredTrunfo = (event) => {
+    const { savedCards } = this.state;
+    const { target: { checked } } = event;
+    if (checked === false) {
+      this.setState({ disabledInput: false });
+      this.setState({ filterCards: (checked === false)
+        ? savedCards
+        : savedCards.filter((param) => (param.cardTrunfo === checked)),
+      });
+    } else {
+      this.setState({ disabledInput: true });
+      this.setState({ filterCards: (checked === false)
+        ? savedCards
+        : savedCards.filter((param) => (param.cardTrunfo === checked)),
+      });
+    }
+  };
+
+  checkTrunfo = () => {
+    const { filterCards } = this.state;
+    if (filterCards.find((param) => param.cardTrunfo === true)) {
+      this.setState({ hasTrunfo: true });
+    } else {
+      this.setState({ hasTrunfo: false });
+    }
+  };
+
+  removeCard = (param) => {
+    const { filterCards, savedCards } = this.state;
+    filterCards.splice(param, 1);
+    savedCards.splice(param, 1);
+    this.setState({ filterCards }, () => this.checkTrunfo());
+    this.setState({ savedCards }, () => this.checkTrunfo());
   };
 
   onInputChange = ({ target }) => {
@@ -38,7 +90,7 @@ class App extends React.Component {
       hasTrunfo,
     } = this.state;
 
-    const savedCard = {
+    const card = {
       cardName,
       cardDescription,
       cardAttr1,
@@ -49,8 +101,15 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
     };
-    this.setState((previousState) => ({
-      cardList: [...previousState.cardList, savedCard],
+    this.setState((prevState) => ({
+      savedCards: [
+        ...prevState.savedCards,
+        card,
+      ],
+      filterCards: [
+        ...prevState.savedCards,
+        card,
+      ],
     }));
 
     this.setState({
@@ -61,18 +120,9 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
-    });
-  };
-
-  createCardList = () => {
-    const { cardList } = this.state;
-    return cardList
-      .map((card) => (
-        <Card
-          key={ card.cardName }
-          { ...card }
-        />
-      ));
+      cardTrunfo: false,
+      isSaveButtonDisabled: true,
+    }, () => this.checkTrunfo());
   };
 
   verifyteSaveButton = () => {
@@ -108,50 +158,77 @@ class App extends React.Component {
   }
 
   render() {
-    const { onInputChange, onSaveButtonClick } = this;
-    const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo,
-      hasTrunfo,
-      isSaveButtonDisabled,
-    } = this.state;
+    const { filterCards, disabledInput } = this.state;
     return (
       <div>
-        <h1>Tryunfo</h1>
-        <Form
-          onInputChange={ onInputChange }
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onSaveButtonClick={ onSaveButtonClick }
-        />
-
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
-        {
-          this.createCardList()
-        }
+        <div>
+          TRUNFO
+        </div>
+        <section>
+          <div>
+            <Form
+              { ...this.state }
+              onInputChange={ this.onInputChange }
+              onSaveButtonClick={ this.onSaveButtonClick }
+              checkTrunfo={ this.checkTrunfo }
+            />
+          </div>
+          <section>
+            <Card
+              { ...this.state }
+            />
+          </section>
+        </section>
+        <section>
+          <h1>SEU DECK:</h1>
+          <section>
+            <input
+              type="text"
+              data-testid="name-filter"
+              placeholder="Nome da carta"
+              onChange={ this.filteredName }
+              disabled={ disabledInput }
+            />
+            <select
+              data-testid="rare-filter"
+              onClick={ this.FilteredRare }
+              disabled={ disabledInput }
+            >
+              <option>todas</option>
+              <option>normal</option>
+              <option>raro</option>
+              <option>muito raro</option>
+            </select>
+            <div>
+              Trunfo:
+              <input
+                data-testid="trunfo-filter"
+                type="checkbox"
+                onClick={ this.filteredTrunfo }
+              />
+            </div>
+          </section>
+          <section>
+            {
+              filterCards.map((param, param2) => (
+                <section key={ param2 }>
+                  <div>
+                    <Card
+                      { ...param }
+                    />
+                    <button
+                      type="button"
+                      data-testid="delete-button"
+                      onClick={ () => this.removeCard(param2) }
+                    >
+                      Excluir
+                    </button>
+                  </div>
+                </section>
+              ))
+            }
+          </section>
+        </section>
       </div>
     );
   }

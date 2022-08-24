@@ -16,7 +16,7 @@ class Card extends Component {
 
     return (
       <div>
-        <h1>Test</h1>
+        <h1>Card</h1>
         <div>
           <h3 data-testid="name-card">{ cardName }</h3>
           <img
