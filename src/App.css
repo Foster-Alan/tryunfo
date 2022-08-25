@@ -1,0 +1,226 @@
+body {
+  background-color: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.create-new-card {
+  color:orange;
+  font-family: 'Jost', sans-serif;
+  width:90%;
+  margin: 2rem auto;
+  padding: 2em;
+  background-color:#232931;
+  border-radius:8px;
+  box-shadow: -2px -2px 8px 1px rgba(161,161,201,0.2) , 2px 2px 8px 1px rgba(0,0,0,0.8);
+  display:flex;
+  justify-content: space-around;
+  flex-direction:row;
+  align-items: center;
+  height: 30rem;
+}
+
+.section-card {
+  width: 18.4rem;
+  height: 27.2rem;
+  background-color:#232931;
+  border-radius:8px;
+  box-shadow: -2px -2px 8px 1px rgba(161,161,201,0.2) , 2px 2px 8px 1px rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+}
+
+.section-card > div {
+  width: 100%;
+  height: 100%;
+  background-color:#232931;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius:8px;
+  padding: 1rem;
+}
+
+.card > div > .img-card {
+  display: flex;
+  padding-top: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.card > div > .img-card > img {
+  max-width: 95%;
+  width: auto;
+}
+
+.description-card {
+  height: 5rem;
+  /* border: 1px solid red; */
+  padding: 0 2rem;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  word-wrap: break-word;
+  white-space: pre-wrap; 
+}
+
+.header-main {
+  font-family: 'Jost', sans-serif;
+  color:white;
+  width:90%;
+  display:block;
+  margin: 2rem auto;
+  padding: 2em;
+  background-color:#232931;
+  border-radius:8px;
+  box-shadow: -2px -2px 8px 1px rgba(161,161,201,0.2) , 2px 2px 8px 1px rgba(0,0,0,0.8);
+  display:flex;
+  justify-content: space-around;
+  flex-direction:row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.all-cards {
+  font-family: 'Jost', sans-serif;
+  color:orange;
+  width:90%;
+  display:block;
+  margin: 2rem auto;
+  padding: 2em;
+  background-color: #232931;
+  border-radius:8px;
+  box-shadow: -2px -2px 8px 1px rgba(161,161,201,0.2) , 2px 2px 8px 1px rgba(0,0,0,0.8);
+  display:flex;
+  justify-content: space-around;
+  flex-direction:row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header-main > .section-filter {
+  /* border: 1px solid red; */
+  height: 4rem;
+  width: 50rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.header-main > .section-filter > .name-filter {
+  height: 3rem;
+  width: 18rem;
+  border-radius: 20px;
+  box-shadow: 2px 2px 8px 1px rgba(161,161,201,0.2) , -2px -2px 8px 1px rgba(0,0,0,0.8);
+  background-color:#232931;
+  border: none;
+  color: rgba(255, 255, 255, 0.541);
+  font-size: 1.2rem;
+  padding-left: 2rem;
+}
+
+.header-main > .section-filter > .name-filter::placeholder {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.541);
+}
+
+.header-main > .section-filter > .rare-filter {
+  height: 3rem;
+  color: rgba(255, 255, 255, 0.541);
+  padding-left: 2rem;
+  width: 7rem;
+  border-radius: 20px;
+  box-shadow: 2px 2px 8px 1px rgba(161,161,201,0.2) , -2px -2px 8px 1px rgba(0,0,0,0.8);
+  background-color:#232931;
+  border: none;
+}
+
+.header-main > .section-filter > .trunfo-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  color: rgba(255, 255, 255, 0.541);
+  width: 7rem;
+  border-radius: 20px;
+  box-shadow: 2px 2px 8px 1px rgba(161,161,201,0.2) , -2px -2px 8px 1px rgba(0,0,0,0.8);
+  background-color:#232931;
+  border: none;
+}
+
+
+.form > .header-form {
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+.form-container {
+  display: flex;
+  flex-flow: column;
+  gap: 0.5rem;
+}
+
+.form-container > label {
+  display: flex;
+  flex-flow: column;
+}
+
+.form-container > label > span {
+  font-weight: 900;
+}
+
+.form-container > label > input {
+  height: 1.5rem;
+  color: rgba(255, 255, 255, 0.541);
+  border-radius: 5px;
+  box-shadow: 2px 2px 8px 1px rgba(161,161,201,0.2) , -2px -2px 8px 1px rgba(0,0,0,0.8);
+  background-color:#232931;
+  border: none;
+  padding: 0 1rem;
+}
+
+.div-second-form {
+  display: flex;
+}
+
+.div-second-form > label {
+  /* border: 1px solid red; */
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+
+.btn-submit-card {
+  display:inline-block;
+  margin-right:2em;
+  padding:0.5em 1.5em;
+  box-shadow: -2px -2px 8px 1px rgba(161,161,201,0.2) , 2px 2px 8px 1px rgba(0,0,0,0.8);
+  border-radius:5px;
+  cursor:pointer;
+  background-color: #232931;
+  border: none;
+  color: white;
+}
+
+.logo {
+  color: orange;
+}
+
+
+.card {
+  border: solid red;
+  text-align: center;
+  /* margin: 100% */
+}
+.atributes {
+  border: solid green;
+  text-align: center;
+}

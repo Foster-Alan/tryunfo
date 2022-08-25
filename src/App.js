@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import './App.css';
 
 class App extends React.Component {
   state = {
@@ -15,21 +16,21 @@ class App extends React.Component {
     cardTrunfo: false,
     isSaveButtonDisabled: true,
     savedCards: [],
-    filterCards: [],
+    filteredCard: [],
     disabledInput: false,
   };
 
   filteredName = (event) => {
     const { savedCards } = this.state;
     const { target: { value } } = event;
-    this.setState({ filterCards: savedCards
+    this.setState({ filteredCard: savedCards
       .filter((param) => (param.cardName).includes(value)) });
   };
 
   FilteredRare = (event) => {
     const { savedCards } = this.state;
     const { target: { value } } = event;
-    this.setState({ filterCards: savedCards
+    this.setState({ filteredCard: savedCards
       .filter((param) => ((value === 'todas') ? savedCards : param.cardRare === value)),
     });
   };
@@ -39,13 +40,13 @@ class App extends React.Component {
     const { target: { checked } } = event;
     if (checked === false) {
       this.setState({ disabledInput: false });
-      this.setState({ filterCards: (checked === false)
+      this.setState({ filteredCard: (checked === false)
         ? savedCards
         : savedCards.filter((param) => (param.cardTrunfo === checked)),
       });
     } else {
       this.setState({ disabledInput: true });
-      this.setState({ filterCards: (checked === false)
+      this.setState({ filteredCard: (checked === false)
         ? savedCards
         : savedCards.filter((param) => (param.cardTrunfo === checked)),
       });
@@ -53,8 +54,8 @@ class App extends React.Component {
   };
 
   checkTrunfo = () => {
-    const { filterCards } = this.state;
-    if (filterCards.find((param) => param.cardTrunfo === true)) {
+    const { filteredCard } = this.state;
+    if (filteredCard.find((param) => param.cardTrunfo === true)) {
       this.setState({ hasTrunfo: true });
     } else {
       this.setState({ hasTrunfo: false });
@@ -62,10 +63,10 @@ class App extends React.Component {
   };
 
   removeCard = (param) => {
-    const { filterCards, savedCards } = this.state;
-    filterCards.splice(param, 1);
+    const { filteredCard, savedCards } = this.state;
+    filteredCard.splice(param, 1);
     savedCards.splice(param, 1);
-    this.setState({ filterCards }, () => this.checkTrunfo());
+    this.setState({ filteredCard }, () => this.checkTrunfo());
     this.setState({ savedCards }, () => this.checkTrunfo());
   };
 
@@ -106,7 +107,7 @@ class App extends React.Component {
         ...prevState.savedCards,
         card,
       ],
-      filterCards: [
+      filteredCard: [
         ...prevState.savedCards,
         card,
       ],
@@ -158,14 +159,16 @@ class App extends React.Component {
   }
 
   render() {
-    const { filterCards, disabledInput } = this.state;
+    const { filteredCard, disabledInput } = this.state;
     return (
       <div>
-        <div>
-          TRUNFO
-        </div>
-        <section>
-          <div>
+        <header className="header-main">
+          <div className="logo">
+            <h1>TRUNFO</h1>
+          </div>
+        </header>
+        <section className="create-new-card">
+          <div className="section-form">
             <Form
               { ...this.state }
               onInputChange={ this.onInputChange }
@@ -173,45 +176,49 @@ class App extends React.Component {
               checkTrunfo={ this.checkTrunfo }
             />
           </div>
-          <section>
+          <section className="section-card">
             <Card
               { ...this.state }
             />
           </section>
         </section>
         <section>
-          <h1>SEU DECK:</h1>
-          <section>
-            <input
-              type="text"
-              data-testid="name-filter"
-              placeholder="Nome da carta"
-              onChange={ this.filteredName }
-              disabled={ disabledInput }
-            />
-            <select
-              data-testid="rare-filter"
-              onClick={ this.FilteredRare }
-              disabled={ disabledInput }
-            >
-              <option>todas</option>
-              <option>normal</option>
-              <option>raro</option>
-              <option>muito raro</option>
-            </select>
-            <div>
-              Trunfo:
+          <header className="header-main">
+            <h1 className="logo">SEU DECK:</h1>
+            <section className="section-filter">
               <input
-                data-testid="trunfo-filter"
-                type="checkbox"
-                onClick={ this.filteredTrunfo }
+                className="name-filter"
+                type="text"
+                data-testid="name-filter"
+                placeholder="Nome da carta"
+                onChange={ this.filteredName }
+                disabled={ disabledInput }
               />
-            </div>
-          </section>
-          <section>
+              <select
+                className="rare-filter"
+                data-testid="rare-filter"
+                onClick={ this.FilteredRare }
+                disabled={ disabledInput }
+              >
+                <option>todas</option>
+                <option>normal</option>
+                <option>raro</option>
+                <option>muito raro</option>
+              </select>
+              <div className="trunfo-filter">
+                Trunfo:
+                <input
+                  data-testid="trunfo-filter"
+                  type="checkbox"
+                  onClick={ this.filteredTrunfo }
+                />
+              </div>
+            </section>
+          </header>
+          <section className="all-cards">
             {
-              filterCards.map((param, param2) => (
-                <section key={ param2 }>
+              filteredCard.map((param, param2) => (
+                <section className="section-card" key={ param2 }>
                   <div>
                     <Card
                       { ...param }
