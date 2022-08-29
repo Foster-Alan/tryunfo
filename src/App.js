@@ -5,12 +5,12 @@ import './App.css';
 
 class App extends React.Component {
   state = {
-    cardName: '',
-    cardDescription: '',
-    cardAttr1: '',
-    cardAttr2: '',
-    cardAttr3: '',
-    cardImage: '',
+    cardName: 'Poze do rodo anos 80',
+    cardDescription: 'Acende puxa prende e solta',
+    cardAttr1: 'Dark',
+    cardAttr2: '50',
+    cardAttr3: '50',
+    cardImage: 'https://i1.sndcdn.com/artworks-000642915646-boa1hr-t500x500.jpg',
     cardRare: 'normal',
     hasTrunfo: false,
     cardTrunfo: false,
@@ -23,15 +23,18 @@ class App extends React.Component {
   filteredName = (event) => {
     const { savedCards } = this.state;
     const { target: { value } } = event;
-    this.setState({ filteredCard: savedCards
-      .filter((param) => (param.cardName).includes(value)) });
+    this.setState({
+      filteredCard: savedCards
+        .filter((param) => (param.cardName).includes(value)),
+    });
   };
 
   FilteredRare = (event) => {
     const { savedCards } = this.state;
     const { target: { value } } = event;
-    this.setState({ filteredCard: savedCards
-      .filter((param) => ((value === 'todas') ? savedCards : param.cardRare === value)),
+    this.setState({
+      filteredCard: savedCards
+        .filter((param) => ((value === 'todas') ? savedCards : param.cardRare === value)),
     });
   };
 
@@ -40,15 +43,17 @@ class App extends React.Component {
     const { target: { checked } } = event;
     if (checked === false) {
       this.setState({ disabledInput: false });
-      this.setState({ filteredCard: (checked === false)
-        ? savedCards
-        : savedCards.filter((param) => (param.cardTrunfo === checked)),
+      this.setState({
+        filteredCard: (checked === false)
+          ? savedCards
+          : savedCards.filter((param) => (param.cardTrunfo === checked)),
       });
     } else {
       this.setState({ disabledInput: true });
-      this.setState({ filteredCard: (checked === false)
-        ? savedCards
-        : savedCards.filter((param) => (param.cardTrunfo === checked)),
+      this.setState({
+        filteredCard: (checked === false)
+          ? savedCards
+          : savedCards.filter((param) => (param.cardTrunfo === checked)),
       });
     }
   };
@@ -135,7 +140,7 @@ class App extends React.Component {
 
   verifyAttribute = () => {
     const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
-    const attr1 = Number(cardAttr1);
+    const attr1 = String(cardAttr1);
     const attr2 = Number(cardAttr2);
     const attr3 = Number(cardAttr3);
     const sumAttrs = attr1 + attr2 + attr3;
@@ -219,7 +224,7 @@ class App extends React.Component {
             {
               filteredCard.map((param, param2) => (
                 <section className="section-card" key={ param2 }>
-                  <div>
+                  <div className="card">
                     <Card
                       { ...param }
                     />

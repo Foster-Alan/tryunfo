@@ -58,15 +58,8 @@ body {
 }
 
 .description-card {
-  height: 5rem;
   /* border: 1px solid red; */
-  padding: 0 2rem;
   text-align: center;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  word-wrap: break-word;
-  white-space: pre-wrap; 
 }
 
 .header-main {
@@ -163,6 +156,7 @@ body {
   display: flex;
   flex-flow: column;
   gap: 0.5rem;
+  /* border: solid red; */
 }
 
 .form-container > label {
@@ -182,6 +176,7 @@ body {
   background-color:#232931;
   border: none;
   padding: 0 1rem;
+  /* border: solid red; */
 }
 
 .div-second-form {
@@ -216,11 +211,33 @@ body {
 
 
 .card {
-  border: solid red;
+  /* border: solid red; */
   text-align: center;
-  /* margin: 100% */
+  /* margin-bottom: 100%; */
+  overflow-y: auto
+  
 }
 .atributes {
-  border: solid green;
-  text-align: center;
+  /* border: solid green; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.test {
+  /* border: solid blue; */
+  display: flex;
+  flex-direction: column;
+
+}
+
+.element {
+  text-align: center
+}
+
+.atk-def {
+  border-radius: 5px;
+  box-shadow: 2px 2px 8px 1px rgba(161,161,201,0.2) , -2px -2px 8px 1px rgba(0,0,0,0.8);
+  background-color:#232931;
+  border: none;
+  padding: 0 1rem;
 }

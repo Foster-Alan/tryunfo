@@ -44,12 +44,12 @@ class Form extends Component {
               />
             </label>
             <label htmlFor="attr1-input">
-              <span>Vida</span>
+              <span>Elemento</span>
               <input
                 data-testid="attr1-input"
                 name="cardAttr1"
                 onChange={ onInputChange }
-                type="number"
+                type="text"
                 value={ cardAttr1 }
               />
             </label>
