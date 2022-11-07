@@ -190,35 +190,35 @@ class App extends React.Component {
         <section>
           <header className="header-main">
             <h1 className="logo">SEU DECK:</h1>
-            <section className="section-filter">
+
+            <input
+              className="name-filter"
+              type="text"
+              data-testid="name-filter"
+              placeholder="Nome da carta"
+              onChange={ this.filteredName }
+              disabled={ disabledInput }
+            />
+            <select
+              className="rare-filter"
+              data-testid="rare-filter"
+              onClick={ this.FilteredRare }
+              disabled={ disabledInput }
+            >
+              <option>todas</option>
+              <option>normal</option>
+              <option>raro</option>
+              <option>muito raro</option>
+            </select>
+            <div className="trunfo-filter">
+              Trunfo:
               <input
-                className="name-filter"
-                type="text"
-                data-testid="name-filter"
-                placeholder="Nome da carta"
-                onChange={ this.filteredName }
-                disabled={ disabledInput }
+                data-testid="trunfo-filter"
+                type="checkbox"
+                onClick={ this.filteredTrunfo }
               />
-              <select
-                className="rare-filter"
-                data-testid="rare-filter"
-                onClick={ this.FilteredRare }
-                disabled={ disabledInput }
-              >
-                <option>todas</option>
-                <option>normal</option>
-                <option>raro</option>
-                <option>muito raro</option>
-              </select>
-              <div className="trunfo-filter">
-                Trunfo:
-                <input
-                  data-testid="trunfo-filter"
-                  type="checkbox"
-                  onClick={ this.filteredTrunfo }
-                />
-              </div>
-            </section>
+            </div>
+
           </header>
           <section className="all-cards">
             {

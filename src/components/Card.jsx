@@ -17,7 +17,11 @@ class Card extends Component {
     return (
       <div className="card">
         <div className="test">
-          <p className="element" data-testid="attr1-card">Element: { cardAttr1 }</p>
+          <p className="element" data-testid="attr1-card">
+            Element:
+            {' '}
+            { cardAttr1 }
+          </p>
           <h3 data-testid="name-card">{ cardName }</h3>
           <div className="img-card">
             <img
@@ -35,12 +39,20 @@ class Card extends Component {
 
           </p>
           <p data-testid="rare-card">{ cardRare }</p>
-          <div className="atributes">         
-            <p className="atk-def" data-testid="attr2-card">Atk: { cardAttr2 }</p>
-            <p className="atk-def" data-testid="attr3-card">Def: { cardAttr3 }</p>
+          <div className="atributes">
+            <p className="atk-def" data-testid="attr2-card">
+              Atk:
+              {' '}
+              { cardAttr2 }
+            </p>
+            <p className="atk-def" data-testid="attr3-card">
+              Def:
+              {' '}
+              { cardAttr3 }
+            </p>
           </div>
-            { cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p> }
-            {/* O AND lógico ( &&) avalia os operandos da esquerda para a direita, retornando imediatamente com o valor do primeiro operando falso que encontrar; se todos os valores forem true , o valor do último operando será retornado. */}
+          { cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p> }
+          {/* O AND lógico ( &&) avalia os operandos da esquerda para a direita, retornando imediatamente com o valor do primeiro operando falso que encontrar; se todos os valores forem true , o valor do último operando será retornado. */}
         </div>
       </div>
     );
