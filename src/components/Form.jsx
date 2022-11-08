@@ -22,70 +22,70 @@ class Form extends Component {
 
       <form className="form">
         <h1 className="header-form">Adicionar nova carta</h1>
+        <div className="form-container">
+          <label htmlFor="name-input">
+            <span>Nome</span>
+            <input
+              data-testid="name-input"
+              name="cardName"
+              onChange={ onInputChange }
+              type="text"
+              value={ cardName }
+            />
+          </label>
+          <label htmlFor="description-input">
+            <span>Descrição</span>
+            <input
+              data-testid="description-input"
+              name="cardDescription"
+              onChange={ onInputChange }
+              type="textarea"
+              value={ cardDescription }
+            />
+          </label>
+          <label htmlFor="attr1-input">
+            <span>Elemento</span>
+            <input
+              data-testid="attr1-input"
+              name="cardAttr1"
+              onChange={ onInputChange }
+              type="text"
+              value={ cardAttr1 }
+            />
+          </label>
+          <label htmlFor="attr2-input">
+            <span>Ataque</span>
+            <input
+              data-testid="attr2-input"
+              name="cardAttr2"
+              onChange={ onInputChange }
+              type="number"
+              value={ cardAttr2 }
+            />
+          </label>
+          <label htmlFor="attr3-input">
+            <span>Defesa</span>
+            <input
+              data-testid="attr3-input"
+              name="cardAttr3"
+              onChange={ onInputChange }
+              type="number"
+              value={ cardAttr3 }
+            />
+          </label>
+          <label htmlFor="image-input">
+            <span>Imagem</span>
+            <input
+              data-testid="image-input"
+              name="cardImage"
+              onChange={ onInputChange }
+              type="text"
+              value={ cardImage }
+            />
+          </label>
+          <div className="div-second-form">
 
-        <label htmlFor="name-input">
-          <span>Nome</span>
-          <input
-            data-testid="name-input"
-            name="cardName"
-            onChange={ onInputChange }
-            type="text"
-            value={ cardName }
-          />
-        </label>
-        <label htmlFor="description-input">
-          <span>Descrição</span>
-          <input
-            data-testid="description-input"
-            name="cardDescription"
-            onChange={ onInputChange }
-            type="textarea"
-            value={ cardDescription }
-          />
-        </label>
-        <label htmlFor="attr1-input">
-          <span>Elemento</span>
-          <input
-            data-testid="attr1-input"
-            name="cardAttr1"
-            onChange={ onInputChange }
-            type="text"
-            value={ cardAttr1 }
-          />
-        </label>
-        <label htmlFor="attr2-input">
-          <span>Ataque</span>
-          <input
-            data-testid="attr2-input"
-            name="cardAttr2"
-            onChange={ onInputChange }
-            type="number"
-            value={ cardAttr2 }
-          />
-        </label>
-        <label htmlFor="attr3-input">
-          <span>Defesa</span>
-          <input
-            data-testid="attr3-input"
-            name="cardAttr3"
-            onChange={ onInputChange }
-            type="number"
-            value={ cardAttr3 }
-          />
-        </label>
-        <label htmlFor="image-input">
-          <span>Imagem</span>
-          <input
-            data-testid="image-input"
-            name="cardImage"
-            onChange={ onInputChange }
-            type="text"
-            value={ cardImage }
-          />
-        </label>
-        <div className="div-second-form">
-          <label htmlFor="rare-input">
-            <span>Raridade</span>
+            Raridade
             <select
               data-testid="rare-input"
               name="cardRare"
@@ -97,21 +97,21 @@ class Form extends Component {
               <option>raro</option>
               <option>muito raro</option>
             </select>
-          </label>
-          <label htmlFor="trunfo-input">
-            <span>Super Trunfo</span>
-            { hasTrunfo
-              ? <span>Você já tem um Super Trunfo em seu baralho</span> : (
-                <input
-                  checked={ cardTrunfo }
-                  data-testid="trunfo-input"
-                  name="cardTrunfo"
-                  onChange={ onInputChange }
-                  type="checkbox"
-                />
-              )}
-          </label>
 
+            <label htmlFor="trunfo-input">
+              Super Trunfo
+              { hasTrunfo
+                ? <span>Você já tem um Super Trunfo em seu baralho</span> : (
+                  <input
+                    checked={ cardTrunfo }
+                    data-testid="trunfo-input"
+                    name="cardTrunfo"
+                    onChange={ onInputChange }
+                    type="checkbox"
+
+                  />)}
+            </label>
+          </div>
           <button
             className="btn-submit-card"
             data-testid="save-button"
