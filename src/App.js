@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
@@ -8,8 +9,8 @@ class App extends React.Component {
     cardName: 'Poze do rodo anos 80',
     cardDescription: 'Acende puxa prende e solta',
     cardAttr1: 'Dark',
-    cardAttr2: '50',
-    cardAttr3: '50',
+    cardAttr2: '9999',
+    cardAttr3: '9999',
     cardImage: 'https://i1.sndcdn.com/artworks-000642915646-boa1hr-t500x500.jpg',
     cardRare: 'normal',
     hasTrunfo: false,
@@ -144,8 +145,8 @@ class App extends React.Component {
     const attr2 = Number(cardAttr2);
     const attr3 = Number(cardAttr3);
     const sumAttrs = attr1 + attr2 + attr3;
-    const maxAttValue = 90;
-    const maxSumAttValue = 210;
+    const maxAttValue = 9999;
+    const maxSumAttValue = 50000;
 
     return !(attr1 > maxAttValue || attr1 < 0
       || attr2 > maxAttValue || attr2 < 0
@@ -190,35 +191,35 @@ class App extends React.Component {
         <section>
           <header className="header-main">
             <h1 className="logo">SEU DECK:</h1>
-
-            <input
-              className="name-filter"
-              type="text"
-              data-testid="name-filter"
-              placeholder="Nome da carta"
-              onChange={ this.filteredName }
-              disabled={ disabledInput }
-            />
-            <select
-              className="rare-filter"
-              data-testid="rare-filter"
-              onClick={ this.FilteredRare }
-              disabled={ disabledInput }
-            >
-              <option>todas</option>
-              <option>normal</option>
-              <option>raro</option>
-              <option>muito raro</option>
-            </select>
-            <div className="trunfo-filter">
-              Trunfo:
+            <section className="section-filter">
               <input
-                data-testid="trunfo-filter"
-                type="checkbox"
-                onClick={ this.filteredTrunfo }
+                className="name-filter"
+                type="text"
+                data-testid="name-filter"
+                placeholder="Nome da carta"
+                onChange={ this.filteredName }
+                disabled={ disabledInput }
               />
-            </div>
-
+              <select
+                className="rare-filter"
+                data-testid="rare-filter"
+                onClick={ this.FilteredRare }
+                disabled={ disabledInput }
+              >
+                <option>todas</option>
+                <option>normal</option>
+                <option>raro</option>
+                <option>muito raro</option>
+              </select>
+              <div className="trunfo-filter">
+                Trunfo:
+                <input
+                  data-testid="trunfo-filter"
+                  type="checkbox"
+                  onClick={ this.filteredTrunfo }
+                />
+              </div>
+            </section>
           </header>
           <section className="all-cards">
             {
