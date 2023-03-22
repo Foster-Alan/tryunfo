@@ -10,9 +10,9 @@ class Form extends Component {
       cardAttr2,
       cardAttr3,
       cardImage,
-      cardRare,
-      cardTrunfo,
-      hasTrunfo,
+      // cardRare,
+      // cardTrunfo,
+      // hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -83,7 +83,7 @@ class Form extends Component {
               value={ cardImage }
             />
           </label>
-          <div className="div-second-form">
+          {/* <div className="div-second-form">
 
             Raridade
             <select
@@ -111,7 +111,7 @@ class Form extends Component {
 
                   />)}
             </label>
-          </div>
+          </div> */}
           <button
             className="btn-submit-card"
             data-testid="save-button"
@@ -136,13 +136,13 @@ Form.propTypes = {
   cardAttr2: PropTypes.string.isRequired,
   cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
-  cardRare: PropTypes.string.isRequired,
-  cardTrunfo: PropTypes.bool.isRequired,
+  // cardRare: PropTypes.string.isRequired,
+  // cardTrunfo: PropTypes.bool.isRequired,
 
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
 };
 
 export default Form;

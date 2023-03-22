@@ -9,7 +9,7 @@ body {
 .create-new-card {
   color:orange;
   font-family: 'Jost', sans-serif;
-  width:90%;
+  width: 90%;
   margin: 2rem auto;
   padding: 2em;
   background-color:#232931;
@@ -19,19 +19,20 @@ body {
   justify-content: space-around;
   flex-direction:row;
   align-items: center;
-  height: 30rem;
+  /* height: 30%; */
 }
 
 .section-card {
-  width: 18.4rem;
-  height: 27.2rem;
-  background-color:#232931;
-  border-radius:8px;
-  box-shadow: -2px -2px 8px 1px rgba(161,161,201,0.2) , 2px 2px 8px 1px rgba(0,0,0,0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 5px;
+  color: black;
+  width: 50%;
+  height: 100%;
+  /* background-color:#232931; */
+  /* border-radius:8px; */
+  /* box-shadow: -2px -2px 8px 1px rgba(161,161,201,0.2) , 2px 2px 8px 1px rgba(0,0,0,0.8); */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* margin: 5px; */
 }
 
 .section-card > div {
